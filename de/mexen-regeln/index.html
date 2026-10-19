@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mexen Regeln: das niederländische Würfelspiel | Mexen</title>
+<meta name="description" content="Mexen Regeln: drei Würfe, Mex (2 und 1), Pasche, 32 und 31, der Pirat und der Pott. Wie Mäxchen, aber ohne Bluffen. Um Punkte oder Schlucke (ab 18).">
+<link rel="canonical" href="https://luclhtc.github.io/de/mexen-regeln/">
+<link rel="alternate" hreflang="nl" href="https://luclhtc.github.io/regels/">
+<link rel="alternate" hreflang="en" href="https://luclhtc.github.io/en/how-to-play-mexen/">
+<link rel="alternate" hreflang="de" href="https://luclhtc.github.io/de/mexen-regeln/">
+<link rel="alternate" hreflang="x-default" href="https://luclhtc.github.io/en/how-to-play-mexen/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Mexen">
+<meta property="og:title" content="Mexen Regeln: das niederländische Würfelspiel">
+<meta property="og:description" content="Mexen Regeln: drei Würfe, Mex (2 und 1), Pasche, 32 und 31, der Pirat und der Pott. Wie Mäxchen, aber ohne Bluffen. Um Punkte oder Schlucke (ab 18).">
+<meta property="og:url" content="https://luclhtc.github.io/de/mexen-regeln/">
+<meta property="og:image" content="https://luclhtc.github.io/img/feature.jpg">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="500">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0d1310">
+<link rel="icon" href="/img/icon-192.png">
+<style>
+  :root { color-scheme: dark; --bg: #0d1310; --panel: #171f1a; --fg: #eef2ec; --text: #d5dcd6; --muted: #97a39a; --accent: #37a46c; --gold: #f0c04a; --border: rgba(255,255,255,.1); }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: radial-gradient(900px 500px at 50% -10%, rgba(53,160,106,.18), transparent 70%), var(--bg); color: var(--fg); font: 17px/1.6 'Segoe UI', system-ui, -apple-system, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 22px 20px 64px; }
+  a { color: #7fd1a0; }
+  nav.top { display: flex; justify-content: space-between; align-items: center; gap: 10px 16px; flex-wrap: wrap; margin-bottom: 26px; font-size: .95rem; }
+  nav.top .home { display: inline-flex; align-items: center; gap: 8px; color: var(--fg); font-weight: 700; text-decoration: none; }
+  nav.top .home svg { width: 26px; height: 26px; }
+  nav.top .langs { display: flex; gap: 14px; }
+  nav.top .langs a { color: var(--muted); text-decoration: none; }
+  nav.top .langs a:hover { color: var(--fg); }
+  nav.top .langs a[aria-current="page"] { color: var(--gold); font-weight: 600; }
+  h1 { font-size: clamp(2rem, 6vw, 2.6rem); line-height: 1.12; margin: 0 0 12px; letter-spacing: -.015em; }
+  h2 { font-size: 1.3rem; line-height: 1.3; margin: 40px 0 10px; color: var(--gold); }
+  p, li { color: var(--text); }
+  .lead { font-size: 1.12rem; }
+  ul.list { padding-left: 1.2em; } ul.list li { margin: 6px 0; }
+  b { color: var(--fg); }
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 22px 0 8px; }
+  .facts div { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 10px 14px; }
+  .facts dt { font-size: .74rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+  .facts dd { margin: 2px 0 0; font-weight: 600; color: var(--fg); }
+  figure { margin: 26px 0; }
+  figure img { display: block; width: 100%; height: auto; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 18px 50px rgba(0,0,0,.4); }
+  figcaption { color: var(--muted); font-size: .92rem; margin-top: 8px; }
+  .rank { list-style: none; padding: 0; margin: 14px 0; display: grid; gap: 8px; }
+  .rank li { display: grid; grid-template-columns: 92px 1fr; gap: 14px; align-items: center; background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 10px 14px; margin: 0; }
+  .rank li.off { background: transparent; border-style: dashed; }
+  .pair { display: inline-flex; gap: 6px; }
+  .pair svg .face { fill: #fbf6ea; stroke: rgba(0,0,0,.3); }
+  .pair svg .pip { fill: #1d1608; }
+  .rank li.off svg .face { fill: #cfc9bb; }
+  .cta { margin: 40px 0 8px; padding: 20px 22px; background: linear-gradient(160deg, rgba(55,164,108,.16), rgba(55,164,108,.05)); border: 1px solid rgba(55,164,108,.35); border-radius: 18px; }
+  .cta h2 { margin-top: 0; color: var(--fg); }
+  .cta .row { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; margin-top: 14px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 999px; font-weight: 700; text-decoration: none; background: linear-gradient(160deg, #37a46c, #2c8657); color: #fff; }
+  .btn:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .soon { color: var(--muted); font-size: .95rem; }
+  footer { margin-top: 44px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--muted); font-size: .9rem; display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  @media (max-width: 480px) { .rank li { grid-template-columns: 1fr; gap: 6px; } body { font-size: 16px; } }
+</style>
+</head>
+<body>
+<main>
+  <nav class="top" aria-label="Sprache">
+    <a class="home" href="/"><svg viewBox="0 0 52 26" aria-hidden="true" focusable="false" style="width:44px;height:22px"><rect x="1" y="1" width="24" height="24" rx="6" fill="#fbf6ea"/><circle cx="8" cy="8" r="2.4" fill="#1d1608"/><circle cx="18" cy="18" r="2.4" fill="#1d1608"/><rect x="27" y="1" width="24" height="24" rx="6" fill="#fbf6ea"/><circle cx="39" cy="13" r="2.4" fill="#1d1608"/></svg>Mexen</a>
+    <span class="langs"><a href="/regels/" hreflang="nl" lang="nl">NL</a> <a href="/en/how-to-play-mexen/" hreflang="en" lang="en">EN</a> <a href="/de/mexen-regeln/" hreflang="de" lang="de" aria-current="page">DE</a></span>
+  </nav>
+
+  <h1>Mexen: die Regeln</h1>
+  <p class="lead">Mexen (auch Mex) ist ein schnelles niederländisches Würfelspiel mit zwei Würfeln. Es ist mit Mäxchen verwandt und zählt fast genauso, aber es wird offen gewürfelt und niemand blufft: Wer am Ende der Runde am niedrigsten liegt, verliert und nimmt den Pott. Gespielt wird um Schlucke oder einfach um Punkte. Jeder Tisch hat eigene Hausregeln; hier stehen die Regeln, wie die <a href="/">Mexen-App</a> sie spielt.</p>
+  <dl class="facts"><div><dt>Spieler</dt><dd>2 oder mehr</dd></div><div><dt>Material</dt><dd>2 Würfel</dd></div><div><dt>Eine Runde</dt><dd>ein paar Minuten</dd></div><div><dt>Um Schlucke</dt><dd>nur ab 18</dd></div></dl>
+
+  <figure><img src="../../img/de-mex.jpg" alt="Ein Mex in der App: 2 und 1, der höchste Wurf. Der Zug ist sofort vorbei." width="900" height="506" loading="lazy" decoding="async"><figcaption>Ein Mex in der App: 2 und 1, der höchste Wurf. Der Zug ist sofort vorbei.</figcaption></figure>
+
+  <h2>So liest du einen Wurf</h2>
+  <p>Der höhere Würfel ist der Zehner, der niedrigere der Einer: eine 6 und eine 4 sind 64, eine 5 und eine 3 sind 53. Von hoch nach niedrig:</p>
+  <ol class="rank"><li><span class="pair" role="img" aria-label="Mex: 2 und 1"><svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="37" height="37" rx="8" class="face"/><g class="pip"><circle cx="11.2" cy="11.2" r="3.7"/><circle cx="28.8" cy="28.8" r="3.7"/></g></svg><svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="37" height="37" rx="8" class="face"/><g class="pip"><circle cx="20.0" cy="20.0" r="3.7"/></g></svg></span><span><b>Mex</b> (2 und 1) ist der höchste Wurf.</span></li><li><span class="pair" role="img" aria-label="6er-Pasch"><svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="37" height="37" rx="8" class="face"/><g class="pip"><circle cx="11.2" cy="10.0" r="3.7"/><circle cx="28.8" cy="10.0" r="3.7"/><circle cx="11.2" cy="20.0" r="3.7"/><circle cx="28.8" cy="20.0" r="3.7"/><circle cx="11.2" cy="30.0" r="3.7"/><circle cx="28.8" cy="30.0" r="3.7"/></g></svg><svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="37" height="37" rx="8" class="face"/><g class="pip"><circle cx="11.2" cy="10.0" r="3.7"/><circle cx="28.8" cy="10.0" r="3.7"/><circle cx="11.2" cy="20.0" r="3.7"/><circle cx="28.8" cy="20.0" r="3.7"/><circle cx="11.2" cy="30.0" r="3.7"/><circle cx="28.8" cy="30.0" r="3.7"/></g></svg></span><span><b>Pasche</b> zählen als Hunderter: 6er-Pasch ist 600, 5er-Pasch 500, bis 1er-Pasch = 100.</span></li><li><span class="pair" role="img" aria-label="6 und 4"><svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="37" height="37" rx="8" class="face"/><g class="pip"><circle cx="11.2" cy="10.0" r="3.7"/><circle cx="28.8" cy="10.0" r="3.7"/><circle cx="11.2" cy="20.0" r="3.7"/><circle cx="28.8" cy="20.0" r="3.7"/><circle cx="11.2" cy="30.0" r="3.7"/><circle cx="28.8" cy="30.0" r="3.7"/></g></svg><svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="37" height="37" rx="8" class="face"/><g class="pip"><circle cx="11.2" cy="11.2" r="3.7"/><circle cx="28.8" cy="11.2" r="3.7"/><circle cx="11.2" cy="28.8" r="3.7"/><circle cx="28.8" cy="28.8" r="3.7"/></g></svg></span><span><b>Normale Würfe</b>: 65, 64, 63 und so weiter, bis 41.</span></li><li><span class="pair" role="img" aria-label="3 und 2"><svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="37" height="37" rx="8" class="face"/><g class="pip"><circle cx="11.2" cy="11.2" r="3.7"/><circle cx="20.0" cy="20.0" r="3.7"/><circle cx="28.8" cy="28.8" r="3.7"/></g></svg><svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="37" height="37" rx="8" class="face"/><g class="pip"><circle cx="11.2" cy="11.2" r="3.7"/><circle cx="28.8" cy="28.8" r="3.7"/></g></svg></span><span><b>32</b> ist der niedrigste Wurf.</span></li><li class="off"><span class="pair" role="img" aria-label="3 und 1"><svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="37" height="37" rx="8" class="face"/><g class="pip"><circle cx="11.2" cy="11.2" r="3.7"/><circle cx="20.0" cy="20.0" r="3.7"/><circle cx="28.8" cy="28.8" r="3.7"/></g></svg><svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="37" height="37" rx="8" class="face"/><g class="pip"><circle cx="20.0" cy="20.0" r="3.7"/></g></svg></span><span><b>31</b> ist kein Ergebnis: Du verteilst einen Schluck und würfelst noch einmal.</span></li></ol>
+
+  <h2>Dein Zug</h2>
+  <ul class="list"><li>Du hast <b>drei Würfe</b>, und <b>der letzte zählt</b>. Früher aufhören geht nicht; nur ein Mex oder eine 32 beenden den Zug vorzeitig.</li><li>Nach einem Wurf darfst du <b>einen Würfel liegen lassen</b>, aber höchstens einen Wurf lang; danach muss er wieder mit. Eine 1 liegen zu lassen gibt eine Chance auf Mex. Mit einer 2 geht das auch, aber dann riskierst du eine 32.</li><li>Innerhalb einer Runde bleiben die Würfel auf dem Tisch: Auch der nächste Spieler darf eine gerade gewürfelte 1 liegen lassen. Eine neue Runde beginnt mit leerem Tisch.</li><li>Würfelt der <b>erste Spieler</b> der Runde Mex mit einem oder zwei Würfen, bekommen alle nach ihm nur so viele Würfe.</li></ul>
+
+  <h2>Mex, 32 und 31</h2>
+  <ul class="list"><li><b>Mex (2 und 1):</b> Dein Zug ist sofort vorbei, und 3 Schlucke kommen in den Pott.</li><li><b>32:</b> der niedrigste Wurf. Dein Zug ist sofort vorbei, und das ist dein Endergebnis.</li><li><b>31:</b> Du verteilst einen Schluck an wen du willst. Der Wurf zählt nicht, und du würfelst noch einmal, so oft es vorkommt.</li></ul>
+
+  <h2>Der Pirat</h2>
+  <p>Würfelst du einen <b>1er-Pasch</b>, wirst du Pirat. Jeder Pasch von 2 bis 6, den danach irgendjemand würfelt, ist ein Schluck für den Piraten. Würfelt der Pirat selbst noch einmal einen 1er-Pasch, wird er <b>Pirat ×2</b>: zwei Schlucke pro Pasch (und so weiter). Würfelt jemand anderes einen 1er-Pasch, übernimmt er. Der Pirat bleibt über die Runden hinweg.</p>
+  <figure><img src="../../img/de-piraat.jpg" alt="Anna würfelt einen 1er-Pasch (100) und ist Pirat." width="900" height="506" loading="lazy" decoding="async"><figcaption>Anna würfelt einen 1er-Pasch (100) und ist Pirat.</figcaption></figure>
+
+  <h2>Rundenende: der Pott</h2>
+  <ul class="list"><li>Wenn alle dran waren, <b>verliert das niedrigste Ergebnis</b> und nimmt den Pott: <b>1 Schluck, plus 3 für jedes Mex</b> der Runde.</li><li>Liegen zwei oder mehr Spieler gleichauf ganz unten, würfelt jeder von ihnen <b>einen Würfel</b>: Der höchste Wurf verliert. Wieder gleich? Dann würfeln nur sie noch einmal.</li><li>Der Verlierer beginnt die nächste Runde.</li></ul>
+
+  <h2>Um Punkte statt um Schlucke</h2>
+  <p>Lieber ohne Alkohol? Spielt um Punkte: Überall, wo „Schluck“ steht, lest ihr „Punkt“. Der Verlierer einer Runde bekommt den Pott als Punkte dazu; wer am Ende die meisten Punkte hat, ist Letzter. In der App wählst du das beim ersten Start und später in den Einstellungen.</p>
+  <figure><img src="../../img/de-punten.jpg" alt="Das Ergebnis einer Runde um Punkte." width="900" height="506" loading="lazy" decoding="async"><figcaption>Das Ergebnis einer Runde um Punkte.</figcaption></figure>
+
+  <h2>Variante: extrem</h2>
+  <ul class="list"><li>Alle würfeln <b>immer genau dreimal</b>, auch nach einem Mex; nur der dritte Wurf zählt.</li><li>Liegen lassen geht nicht: Du würfelst immer mit beiden Würfeln.</li><li>Der Pott beginnt bei 1. <b>Mex und 65 verdoppeln den Pott</b>, und jeder Pasch zählt seine Augen dazu (3er-Pasch = +3, 1er-Pasch = +1). Alles in der Reihenfolge, in der gewürfelt wird.</li><li>31 zählt nicht: einfach noch einmal würfeln, ohne Schluck zu verteilen. Der Pirat funktioniert wie im normalen Spiel.</li><li>Der Niedrigste nimmt den ganzen Pott; bei Gleichstand würfeln diese Spieler je einen Würfel, wie oben.</li></ul>
+
+  <section class="cta">
+    <h2>Die App zählt für euch mit</h2>
+    <p>Die kostenlose Mexen-App ist der Punktezähler: 3D-Würfel, sie kennt alle Regeln oben, führt den Pott und den Piraten und sagt, wer verliert. In sechs Sprachen, ohne Konto, auch offline.</p>
+    <div class="row"><a class="btn" href="https://play.google.com/store/apps/details?id=app.mexen.party&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dregels-de">Bei Google Play laden</a><span class="soon">iPhone folgt.</span></div>
+  </section>
+
+  <h2>Verantwortungsvoll spielen</h2>
+  <p>Spielt ihr um Schlucke? Nur ab 18, in Maßen trinken und danach nicht fahren. Oder spielt einfach um Punkte.</p>
+
+  <footer>
+    <span>© 2026 LackyLack</span>
+    <a href="/">Über die App</a>
+    <a href="/privacy-policy.html">Datenschutz</a>
+    <a href="/terms.html">Nutzungsbedingungen</a>
+  </footer>
+</main>
+</body>
+</html>

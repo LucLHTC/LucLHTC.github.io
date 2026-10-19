@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Mexen – meedoen met een lobby</title>
+<meta name="description" content="Doe mee met een spel Mexen op het telefoon van een vriend.">
+<style>
+  /* Landingspagina van de QR-code op het lobbyscherm (Mexen 1.4, samen spelen).
+     Het adres van de lobby staat achter het #-teken en gaat dus nooit naar de server: alles gebeurt in de browser. */
+  :root { color-scheme: dark; --bg: #0d1310; --panel: #171f1a; --fg: #eef2ec; --muted: #97a39a; --accent: #37a46c; --gold: #f0c04a; --border: rgba(255,255,255,.12); }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; background: radial-gradient(800px 480px at 50% -10%, rgba(53,160,106,.2), transparent 70%), var(--bg); color: var(--fg);
+    font: 16px/1.5 'Segoe UI', system-ui, -apple-system, sans-serif; display: flex; align-items: center; justify-content: center; }
+  main { width: 100%; max-width: 440px; padding: 28px 18px 40px; text-align: center; }
+  .dice { display: inline-flex; gap: 10px; margin-bottom: 10px; }
+  .dice svg { width: 44px; height: 44px; color: var(--accent); }
+  h1 { margin: 0 0 4px; font-size: 1.6rem; letter-spacing: -.01em; }
+  .sub { margin: 0 0 22px; color: var(--muted); }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 20px; padding: 20px 18px; box-shadow: 0 20px 50px rgba(0,0,0,.4); }
+  .label { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .code { font-size: 3rem; font-weight: 800; letter-spacing: .28em; color: var(--gold); line-height: 1.1; margin: 2px 0 6px; padding-left: .28em; font-variant-numeric: tabular-nums; }
+  .addr { color: var(--muted); font-size: .9rem; font-variant-numeric: tabular-nums; }
+  .btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; margin-top: 16px; padding: 15px 18px; border-radius: 999px; border: 1px solid rgba(255,255,255,.18);
+    color: var(--fg); text-decoration: none; font-weight: 700; font-size: 1.05rem; background: var(--panel); }
+  .btn.primary { background: linear-gradient(160deg, #37a46c, #2c8657); border-color: transparent; color: #fff; box-shadow: 0 10px 28px rgba(55,164,108,.35); }
+  .btn.soon { opacity: .5; pointer-events: none; }
+  .steps { text-align: left; margin: 20px 0 0; padding-left: 22px; color: #d5dcd6; }
+  .steps li { margin: 6px 0; }
+  .fine { color: var(--muted); font-size: .85rem; margin-top: 22px; }
+  .fine a { color: #7fd1a0; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <div class="dice" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="8" cy="8" r="1.6" fill="currentColor" stroke="none"/><circle cx="16" cy="16" r="1.6" fill="currentColor" stroke="none"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg>
+  </div>
+  <h1 id="title"></h1>
+  <p class="sub" id="lead"></p>
+
+  <div class="card" id="lobby" hidden>
+    <div class="label" id="codeLabel"></div>
+    <div class="code" id="code"></div>
+    <div class="addr" id="addr"></div>
+    <a class="btn primary" id="open" href="#"></a>
+    <a class="btn" id="store" href="https://play.google.com/store/apps/details?id=app.mexen.party&amp;referrer=utm_source%3Dqr%26utm_medium%3Dlobby"></a>
+    <ol class="steps" id="steps"></ol>
+  </div>
+  <div class="card" id="nolobby" hidden><p id="noText" style="margin:0"></p>
+    <a class="btn primary" href="https://play.google.com/store/apps/details?id=app.mexen.party&amp;referrer=utm_source%3Dqr%26utm_medium%3Dlobby" id="store2"></a></div>
+
+  <p class="fine"><span id="fine"></span> <a href="/">luclhtc.github.io</a></p>
+</main>
+<script>
+(() => {
+  'use strict';
+  const T = {
+    nl: { title: 'Doe mee met Mexen', lead: '{name} heeft een lobby geopend. Speel mee op je eigen telefoon.', leadNo: 'Speel Mexen samen, ieder op zijn eigen telefoon.',
+      code: 'Code', open: 'Open in Mexen', store: 'Mexen in Google Play', storeIos: 'App Store (binnenkort)', addr: 'Adres: {a}',
+      s1: 'Zit op hetzelfde wifi-netwerk (of de hotspot) als {name}.', s2: 'Open Mexen en tik op Meedoen.', s3: 'Kies de lobby van {name} en vul code {code} in.',
+      no: 'Deze link bevat geen lobby. Vraag de host om de QR-code opnieuw te tonen.', fine: 'Er gaat niets naar deze website: het adres van de lobby blijft op je telefoon.' },
+    en: { title: 'Join Mexen', lead: '{name} has opened a lobby. Play along on your own phone.', leadNo: 'Play Mexen together, everyone on their own phone.',
+      code: 'Code', open: 'Open in Mexen', store: 'Mexen on Google Play', storeIos: 'App Store (coming soon)', addr: 'Address: {a}',
+      s1: 'Be on the same Wi-Fi (or hotspot) as {name}.', s2: 'Open Mexen and tap Join.', s3: 'Pick {name}’s lobby and enter code {code}.',
+      no: 'This link does not contain a lobby. Ask the host to show the QR code again.', fine: 'Nothing is sent to this website: the lobby address stays on your phone.' },
+    fr: { title: 'Rejoindre Mexen', lead: '{name} a ouvert un salon. Joue sur ton propre téléphone.', leadNo: 'Jouez à Mexen ensemble, chacun sur son téléphone.',
+      code: 'Code', open: 'Ouvrir dans Mexen', store: 'Mexen sur Google Play', storeIos: 'App Store (bientôt)', addr: 'Adresse : {a}',
+      s1: 'Sois sur le même Wi-Fi (ou partage de connexion) que {name}.', s2: 'Ouvre Mexen et touche Rejoindre.', s3: 'Choisis le salon de {name} et entre le code {code}.',
+      no: 'Ce lien ne contient pas de salon. Demande à l’hôte d’afficher à nouveau le QR code.', fine: 'Rien n’est envoyé à ce site : l’adresse du salon reste sur ton téléphone.' },
+    de: { title: 'Bei Mexen mitspielen', lead: '{name} hat eine Lobby geöffnet. Spiel auf deinem eigenen Handy mit.', leadNo: 'Spielt Mexen zusammen, jeder auf seinem eigenen Handy.',
+      code: 'Code', open: 'In Mexen öffnen', store: 'Mexen bei Google Play', storeIos: 'App Store (bald)', addr: 'Adresse: {a}',
+      s1: 'Sei im selben WLAN (oder Hotspot) wie {name}.', s2: 'Öffne Mexen und tippe auf Beitreten.', s3: 'Wähle die Lobby von {name} und gib den Code {code} ein.',
+      no: 'Dieser Link enthält keine Lobby. Bitte den Host, den QR-Code erneut zu zeigen.', fine: 'Nichts wird an diese Website gesendet: Die Lobby-Adresse bleibt auf deinem Handy.' },
+    es: { title: 'Únete a Mexen', lead: '{name} ha abierto una sala. Juega en tu propio móvil.', leadNo: 'Jugad a Mexen juntos, cada uno en su móvil.',
+      code: 'Código', open: 'Abrir en Mexen', store: 'Mexen en Google Play', storeIos: 'App Store (pronto)', addr: 'Dirección: {a}',
+      s1: 'Conéctate al mismo wifi (o punto de acceso) que {name}.', s2: 'Abre Mexen y pulsa Unirse.', s3: 'Elige la sala de {name} y escribe el código {code}.',
+      no: 'Este enlace no contiene ninguna sala. Pide al anfitrión que vuelva a mostrar el código QR.', fine: 'No se envía nada a esta web: la dirección de la sala se queda en tu móvil.' },
+    pt: { title: 'Entra no Mexen', lead: '{name} abriu uma sala. Joga no teu próprio telemóvel.', leadNo: 'Joguem Mexen juntos, cada um no seu telemóvel.',
+      code: 'Código', open: 'Abrir no Mexen', store: 'Mexen no Google Play', storeIos: 'App Store (em breve)', addr: 'Endereço: {a}',
+      s1: 'Liga-te à mesma rede Wi-Fi (ou hotspot) que {name}.', s2: 'Abre o Mexen e toca em Entrar.', s3: 'Escolhe a sala de {name} e escreve o código {code}.',
+      no: 'Esta ligação não tem nenhuma sala. Pede ao anfitrião para mostrar outra vez o código QR.', fine: 'Nada é enviado para este site: o endereço da sala fica no teu telemóvel.' },
+  };
+  const langs = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en']).map(l => String(l).slice(0, 2).toLowerCase());
+  const lang = langs.find(l => T[l]) || 'en';
+  document.documentElement.lang = lang;
+  const t = (k, v) => T[lang][k].replace(/\{(\w+)\}/g, (m, x) => (v && v[x] != null ? v[x] : m));
+  const $ = id => document.getElementById(id);
+
+  // #a=192.168.1.37[:poort]&c=4821&n=Luc  (alleen tekst; alles via textContent in de pagina)
+  const q = new URLSearchParams(location.hash.slice(1));
+  const a = (q.get('a') || '').trim(), code = (q.get('c') || '').replace(/\D/g, '').slice(0, 4);
+  const name = (q.get('n') || '').trim().slice(0, 18) || 'Mexen';
+  const valid = /^\[?[0-9a-fA-F:.]+\]?(:\d{2,5})?$/.test(a) && code.length === 4;
+
+  $('title').textContent = t('title');
+  $('fine').textContent = t('fine');
+  if (!valid) {
+    $('lead').textContent = t('leadNo');
+    $('noText').textContent = t('no');
+    $('store2').textContent = t('store');
+    $('nolobby').hidden = false;
+    return;
+  }
+  $('lead').textContent = t('lead', { name });
+  $('codeLabel').textContent = t('code');
+  $('code').textContent = code;
+  $('addr').textContent = t('addr', { a });
+  ['s1', 's2', 's3'].forEach(k => { const li = document.createElement('li'); li.textContent = t(k, { name, code }); $('steps').appendChild(li); });
+  $('lobby').hidden = false;
+
+  const ua = navigator.userAgent || '';
+  const android = /Android/i.test(ua);
+  const ios = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  const params = `a=${encodeURIComponent(a)}&c=${code}&n=${encodeURIComponent(name)}`;
+  // met UTM-code: de Play Console telt zo de installaties via de QR-code (utm_source=qr)
+  const store = 'https://play.google.com/store/apps/details?id=app.mexen.party&referrer=utm_source%3Dqr%26utm_medium%3Dlobby';
+  let appLink = `mexen://join?${params}`;
+  if (android) appLink = `intent://join?${params}#Intent;scheme=mexen;package=app.mexen.party;S.browser_fallback_url=${encodeURIComponent(store)};end`;
+  const open = $('open');
+  open.textContent = t('open');
+  open.href = appLink;
+  const st = $('store');
+  if (ios) { st.textContent = t('storeIos'); st.classList.add('soon'); st.removeAttribute('href'); }
+  else st.textContent = t('store');
+  if (!android && !ios) open.hidden = true;           // computer: alleen de stappen
+  // Android: meteen proberen de app te openen (zonder app gaat Chrome naar Google Play; lukt het niet zonder tik, dan
+  // staat de knop er nog). Op een iPhone niet vanzelf: zonder app toont Safari dan een foutmelding.
+  if (android) setTimeout(() => { try { location.href = appLink; } catch (e) {} }, 350);
+})();
+</script>
+</body>
+</html>

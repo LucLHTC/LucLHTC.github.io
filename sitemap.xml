@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://luclhtc.github.io/</loc>
+  </url>
+  <url><loc>https://luclhtc.github.io/regels/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://luclhtc.github.io/regels/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luclhtc.github.io/en/how-to-play-mexen/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://luclhtc.github.io/de/mexen-regeln/"/>
+  </url>
+  <url><loc>https://luclhtc.github.io/en/how-to-play-mexen/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://luclhtc.github.io/regels/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luclhtc.github.io/en/how-to-play-mexen/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://luclhtc.github.io/de/mexen-regeln/"/>
+  </url>
+  <url><loc>https://luclhtc.github.io/de/mexen-regeln/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://luclhtc.github.io/regels/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luclhtc.github.io/en/how-to-play-mexen/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://luclhtc.github.io/de/mexen-regeln/"/>
+  </url>
+</urlset>
