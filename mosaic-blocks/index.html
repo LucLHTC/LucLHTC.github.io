@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mosaic Blocks – block puzzle by LH Studios</title>
+<meta name="description" content="Block puzzle with a twist: every line you clear lays a stone in a mosaic. Weekly divisions, power-ups and a daily mosaic, in six languages.">
+<link rel="canonical" href="https://luclhtc.github.io/mosaic-blocks/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mosaic Blocks">
+<meta property="og:title" content="Mosaic Blocks – block puzzle">
+<meta property="og:description" content="Every line you clear lays a stone in a mosaic. Play your friends in the weekly divisions.">
+<meta property="og:url" content="https://luclhtc.github.io/mosaic-blocks/">
+<meta name="theme-color" content="#0b1a3d">
+<style>
+  :root { color-scheme: dark; --bg: #0b1a3d; --deep: #07132f; --panel: #122754; --fg: #fffdf6; --muted: #a9b8dc; --gold: #ffc94d; --accent: #ff5279; --border: rgba(255,255,255,.12); }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body { margin: 0; min-height: 100vh; background: radial-gradient(800px 480px at 50% -8%, rgba(255,201,77,.14), transparent 70%), var(--bg); color: var(--fg); font: 16px/1.55 'Segoe UI', system-ui, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 20px 60px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+  header svg { flex: none; width: 64px; height: 64px; }
+  h1 { margin: 0; font: 700 2.1rem/1.15 Georgia, 'Times New Roman', serif; letter-spacing: -.01em; }
+  h1 small { display: block; margin-top: 6px; font: 400 1rem/1.4 'Segoe UI', system-ui, sans-serif; color: var(--muted); }
+  h2 { font-size: 1.2rem; margin: 32px 0 8px; color: var(--gold); }
+  p, li { color: #dbe4ff; }
+  .invite { margin: 8px 0 24px; padding: 20px; border-radius: 20px; background: var(--panel); border: 1.5px solid rgba(255,201,77,.5); text-align: center; }
+  .invite .label { margin: 0 0 10px; font-size: .85rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .invite .code { display: inline-block; padding: 10px 28px; border-radius: 999px; background: var(--deep); border: 1.5px solid var(--gold); color: var(--gold); font: 900 2rem/1.2 'Segoe UI', system-ui, sans-serif; letter-spacing: .12em; }
+  .invite p { margin: 14px auto 0; max-width: 520px; }
+  .invite button { margin-top: 14px; padding: 10px 18px; border-radius: 999px; border: 1px solid rgba(255,255,255,.25); background: transparent; color: var(--fg); font: 700 1rem 'Segoe UI', system-ui, sans-serif; cursor: pointer; }
+  .stores { display: flex; flex-wrap: wrap; gap: 12px; margin: 8px 0; }
+  .btn { display: inline-flex; align-items: center; padding: 12px 20px; border-radius: 999px; border: 1px solid rgba(255,255,255,.18); color: var(--fg); text-decoration: none; font-weight: 700; }
+  .btn.primary { background: linear-gradient(160deg, #ff6b8b, #ff3f6a); border-color: transparent; color: #fff; }
+  .btn.soon { opacity: .55; pointer-events: none; }
+  ul { padding-left: 1.2em; }
+  li { margin: 6px 0; }
+  footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--muted); font-size: .9rem; display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  a { color: var(--gold); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+      <g transform="rotate(45 32 32)">
+        <rect x="18" y="18" width="13" height="13" rx="2" fill="#19d7e8"/>
+        <rect x="33" y="18" width="13" height="13" rx="2" fill="#19d7e8"/>
+        <rect x="18" y="33" width="13" height="13" rx="2" fill="#168c7f"/>
+        <rect x="33" y="33" width="13" height="13" rx="2" fill="#ffc94d"/>
+      </g>
+    </svg>
+    <h1>Mosaic Blocks <small data-t="tag">Block puzzle with a twist: every line you clear lays a stone in a mosaic.</small></h1>
+  </header>
+
+  <section class="invite" id="invite" hidden>
+    <p class="label" data-t="inviteLabel">A friend invites you</p>
+    <div class="code" id="code"></div>
+    <p data-t="inviteHow">Install Mosaic Blocks, tap the gift at the top left of the home screen and enter this code. Your friend gets a reward when you have played your first game.</p>
+    <button type="button" id="copy" data-t="copy">Copy code</button>
+  </section>
+
+  <!-- Store buttons: set LIVE.ios / LIVE.android in the script below to true once the app is in that store. -->
+  <div class="stores">
+    <a class="btn soon" id="ios" href="#" aria-disabled="true"><span data-t="ios">App Store</span>&nbsp;<span class="soonText" data-t="soon">— coming soon</span></a>
+    <a class="btn soon" id="android" href="#" aria-disabled="true"><span data-t="android">Google Play</span>&nbsp;<span class="soonText" data-t="soon">— coming soon</span></a>
+  </div>
+
+  <h2 data-t="whatTitle">What's in it</h2>
+  <ul>
+    <li data-t="f1">Every line you clear lays a stone in one of 80 mosaics; finish one and it hangs in your gallery.</li>
+    <li data-t="f2">Weekly divisions: you play in a group of up to 30 players at your level, and on Monday the best move up.</li>
+    <li data-t="f3">Power-ups: the bomb, the pencil that draws your own block and the swap. Once each per game, the same for everyone.</li>
+    <li data-t="f4">A daily mosaic and daily goals, in six languages. No account needed.</li>
+  </ul>
+
+  <footer>
+    <span>© 2026 LH Studios</span>
+    <a href="privacy.html" data-t="privacy">Privacy policy</a>
+    <a href="../">LH Studios</a>
+  </footer>
+</main>
+<script>
+(function () {
+  // The stores, and whether the app is live there yet.
+  var STORES = { ios: 'https://apps.apple.com/app/id6826691554', android: 'https://play.google.com/store/apps/details?id=com.lackylack.mosaicblocks' };
+  var LIVE = { ios: false, android: false };
+  var T = {
+    nl: { tag: 'Blokpuzzel met een twist: elke rij die je wegspeelt legt een steentje in een mozaïek.', inviteLabel: 'Een vriend nodigt je uit', inviteHow: 'Installeer Mosaic Blocks, tik linksboven op het startscherm op het cadeautje en vul deze code in. Je vriend krijgt een beloning zodra jij je eerste potje hebt gespeeld.', copy: 'Code kopiëren', copied: 'Gekopieerd', soon: '— binnenkort', whatTitle: 'Wat erin zit', f1: 'Elke rij die je wegspeelt legt een steentje in een van de 80 mozaïeken; een af mozaïek hangt in je galerij.', f2: 'Wekelijkse divisies: je speelt in een groep van hoogstens 30 spelers van jouw niveau, en op maandag promoveren de besten.', f3: 'Power-ups: de bom, het tekenblok waarmee je zelf een blok tekent en de wissel. Elk één keer per potje, voor iedereen gelijk.', f4: 'Elke dag een mozaïek en dagdoelen, in zes talen. Geen account nodig.', privacy: 'Privacybeleid' },
+    de: { tag: 'Blockpuzzle mit Twist: jede geleerte Reihe legt ein Steinchen ins Mosaik.', inviteLabel: 'Ein Freund lädt dich ein', inviteHow: 'Installiere Mosaic Blocks, tippe oben links auf dem Startbildschirm auf das Geschenk und gib diesen Code ein. Dein Freund bekommt eine Belohnung, sobald du deine erste Runde gespielt hast.', copy: 'Code kopieren', copied: 'Kopiert', soon: '— bald', whatTitle: 'Was drin ist', f1: 'Jede geleerte Reihe legt ein Steinchen in eines von 80 Mosaiken; ein fertiges Mosaik hängt in deiner Galerie.', f2: 'Wöchentliche Divisionen: Du spielst in einer Gruppe von bis zu 30 Spielern deines Niveaus, und am Montag steigen die Besten auf.', f3: 'Power-ups: die Bombe, der Stift, mit dem du deinen eigenen Block zeichnest, und der Tausch. Jedes einmal pro Runde, für alle gleich.', f4: 'Jeden Tag ein Mosaik und Tagesziele, in sechs Sprachen. Kein Konto nötig.', privacy: 'Datenschutz' },
+    fr: { tag: 'Puzzle de blocs : chaque ligne vidée pose une pierre dans une mosaïque.', inviteLabel: 'Un ami t’invite', inviteHow: 'Installe Mosaic Blocks, touche le cadeau en haut à gauche de l’écran d’accueil et entre ce code. Ton ami reçoit une récompense dès que tu as joué ta première partie.', copy: 'Copier le code', copied: 'Copié', soon: '— bientôt', whatTitle: 'Au programme', f1: 'Chaque ligne vidée pose une pierre dans l’une des 80 mosaïques ; une mosaïque finie rejoint ta galerie.', f2: 'Divisions hebdomadaires : tu joues dans un groupe de 30 joueurs maximum de ton niveau, et le lundi les meilleurs montent.', f3: 'Bonus : la bombe, le crayon pour dessiner ton propre bloc et l’échange. Une fois chacun par partie, pareil pour tous.', f4: 'Une mosaïque et des objectifs chaque jour, en six langues. Sans compte.', privacy: 'Politique de confidentialité' },
+    es: { tag: 'Puzle de bloques con un giro: cada línea que vacías pone una tesela en un mosaico.', inviteLabel: 'Un amigo te invita', inviteHow: 'Instala Mosaic Blocks, toca el regalo arriba a la izquierda de la pantalla de inicio e introduce este código. Tu amigo recibe un premio cuando hayas jugado tu primera partida.', copy: 'Copiar código', copied: 'Copiado', soon: '— pronto', whatTitle: 'Qué incluye', f1: 'Cada línea que vacías pone una tesela en uno de los 80 mosaicos; un mosaico terminado cuelga en tu galería.', f2: 'Divisiones semanales: juegas en un grupo de hasta 30 jugadores de tu nivel, y el lunes suben los mejores.', f3: 'Potenciadores: la bomba, el lápiz para dibujar tu propio bloque y el cambio. Una vez cada uno por partida, igual para todos.', f4: 'Un mosaico y objetivos cada día, en seis idiomas. Sin cuenta.', privacy: 'Política de privacidad' },
+    pt: { tag: 'Quebra-cabeça de blocos: cada linha limpa coloca uma pedrinha no mosaico.', inviteLabel: 'Um amigo convida você', inviteHow: 'Instale o Mosaic Blocks, toque no presente no canto superior esquerdo da tela inicial e digite este código. Seu amigo ganha um prêmio assim que você jogar a primeira partida.', copy: 'Copiar código', copied: 'Copiado', soon: '— em breve', whatTitle: 'O que tem', f1: 'Cada linha limpa coloca uma pedrinha em um dos 80 mosaicos; um mosaico pronto vai para a sua galeria.', f2: 'Divisões semanais: você joga em um grupo de até 30 jogadores do seu nível, e na segunda os melhores sobem.', f3: 'Power-ups: a bomba, o lápis para desenhar o seu próprio bloco e a troca. Uma vez cada por partida, igual para todos.', f4: 'Um mosaico e metas todos os dias, em seis idiomas. Sem conta.', privacy: 'Política de privacidade' }
+  };
+  var q = new URLSearchParams(location.search);
+  var langs = [q.get('lang') || ''].concat(navigator.languages || [navigator.language || '']);
+  var lang = 'en';
+  for (var i = 0; i < langs.length; i++) {
+    var l = String(langs[i] || '').slice(0, 2).toLowerCase();
+    if (l === 'en' || T[l]) { lang = l; break; }
+  }
+  var dict = T[lang] || {};
+  document.documentElement.lang = lang;
+  var nodes = document.querySelectorAll('[data-t]');
+  for (var j = 0; j < nodes.length; j++) {
+    var k = nodes[j].getAttribute('data-t');
+    if (dict[k]) nodes[j].textContent = dict[k];
+  }
+  ['ios', 'android'].forEach(function (s) {
+    var a = document.getElementById(s);
+    if (!LIVE[s]) return;
+    a.href = STORES[s];
+    a.className = 'btn primary';
+    a.removeAttribute('aria-disabled');
+    var soon = a.querySelector('.soonText');
+    if (soon) soon.remove();
+  });
+  // An invite link: ?c=CODE (six characters without 0, O, 1, I or L).
+  var raw = String(q.get('c') || '').toUpperCase().replace(/[\s.-]/g, '');
+  if (/^[A-HJKMNP-Z2-9]{6}$/.test(raw)) {
+    document.getElementById('code').textContent = raw.slice(0, 3) + ' ' + raw.slice(3);
+    document.getElementById('invite').hidden = false;
+    var btn = document.getElementById('copy');
+    btn.addEventListener('click', function () {
+      if (!navigator.clipboard) return;
+      navigator.clipboard.writeText(raw).then(function () { btn.textContent = dict.copied || 'Copied'; }, function () {});
+    });
+  }
+})();
+</script>
+</body>
+</html>
